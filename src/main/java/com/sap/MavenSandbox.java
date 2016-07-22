@@ -11,8 +11,15 @@ public class MavenSandbox {
 		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 		
 		HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
-
+		obj.setMessage("2");
 	    obj.printMessage();
+	    
+	    alidatorFactory vf = Validation.buildDefaultValidatorFactory();
+		Validator validator = vf.getValidator();
+		Set<ConstraintViolation<Dog>> set = validator.validate(d);
+		for (ConstraintViolation<Dog> constraintViolation : set) {
+			System.out.println(constraintViolation.getMessage());
+		}
 	   
 	}
 	
