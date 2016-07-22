@@ -1,6 +1,12 @@
 package main.java.com.sap;
 
 
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,10 +20,11 @@ public class MavenSandbox {
 		obj.setMessage("2");
 	    obj.printMessage();
 	    
-	    alidatorFactory vf = Validation.buildDefaultValidatorFactory();
+	    // http://stackoverflow.com/questions/24386771/javax-validation-validationexception-hv000183-unable-to-load-javax-el-express
+	    ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
 		Validator validator = vf.getValidator();
-		Set<ConstraintViolation<Dog>> set = validator.validate(d);
-		for (ConstraintViolation<Dog> constraintViolation : set) {
+		Set<ConstraintViolation<HelloWorld>> set = validator.validate(obj);
+		for (ConstraintViolation<HelloWorld> constraintViolation : set) {
 			System.out.println(constraintViolation.getMessage());
 		}
 	   
