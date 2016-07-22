@@ -17,7 +17,7 @@ public class MavenSandbox {
 		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 		
 		HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
-		obj.setMessage("2");
+		obj.setMessage(null);
 	    obj.printMessage();
 	    
 	    // http://stackoverflow.com/questions/24386771/javax-validation-validationexception-hv000183-unable-to-load-javax-el-express
@@ -27,7 +27,6 @@ public class MavenSandbox {
 		for (ConstraintViolation<HelloWorld> constraintViolation : set) {
 			System.out.println(constraintViolation.getMessage());
 		}
-	   
 	}
 	
 	public String hello(){

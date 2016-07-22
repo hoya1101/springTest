@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class HelloWorld {
 	
-	@Null
+	@NotBlank
 	private String message;
 	   
 	   @Resource
