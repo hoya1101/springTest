@@ -8,6 +8,8 @@
    <bean id="helloWorld" class="main.java.com.sap.HelloWorld">
        <!--  <property name="message" value="Hello World! I042416"/>-->
        <property name="message" value="sss"/>
+       <property name="testMin" value="2"/>
+       <property name="phone" value="1"/>
    </bean>
 
 </beans>

@@ -18,14 +18,19 @@ public class MavenSandbox {
 		
 		HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
 		obj.setMessage(null);
-	    obj.printMessage();
+		obj.setTestMin("i042416");
+	    //obj.printMessage();
+	    
+	    //obj.setTestMin(null);
 	    
 	    // http://stackoverflow.com/questions/24386771/javax-validation-validationexception-hv000183-unable-to-load-javax-el-express
 	    ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
 		Validator validator = vf.getValidator();
 		Set<ConstraintViolation<HelloWorld>> set = validator.validate(obj);
+		System.out.println("Total number of violations: " + set.size());
 		for (ConstraintViolation<HelloWorld> constraintViolation : set) {
 			System.out.println(constraintViolation.getMessage());
+			System.out.println(constraintViolation.getPropertyPath());
 		}
 	}
 	
