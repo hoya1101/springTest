@@ -19,6 +19,7 @@ public class MavenSandbox {
 		HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
 		obj.setMessage(null);
 		obj.setTestMin("i042416");
+		obj.setTestMin("");
 	    //obj.printMessage();
 	    
 	    //obj.setTestMin(null);
