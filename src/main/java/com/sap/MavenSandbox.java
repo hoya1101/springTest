@@ -11,15 +11,20 @@ import javax.validation.ValidatorFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 // Jerry 2016-08-07 16:11PM - this interface should be applied in interface
 
-// Jerry 2016-08-07 16:37PM - @Component
+// Jerry 2016-08-07 16:37PM - @Component - does not work
+/*
+ * 我们加了@Component注解，在配置文件中需要配置component-scan扫描到这个类，
+ * Spring容器会自动查询实现了BeanPostProcessor接口的实现类并执行该接口定义的方法。
+ */
 @Component
-public class MavenSandbox implements BeanFactoryAware{
+public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor{
 
 	private BeanFactory               beanFactory;
 	
@@ -55,5 +60,15 @@ public class MavenSandbox implements BeanFactoryAware{
 
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
 		this.beanFactory = beanFactory;
+	}
+	public Object postProcessBeforeInitialization(Object bean, String beanName)
+			throws BeansException {
+		System.out.println("preProcessBeforeInitialization: " + beanName);
+		return bean;
+	}
+	public Object postProcessAfterInitialization(Object bean, String beanName)
+			throws BeansException {
+		System.out.println("postProcessAfterInitialization: " + beanName);
+		return bean;
 	}
 }
