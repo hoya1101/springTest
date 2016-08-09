@@ -7,10 +7,12 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -42,6 +44,10 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor{
 		ClassPathResource res = new ClassPathResource("beans.xml");
 		XmlBeanFactory fac = new XmlBeanFactory(res);
 		Object another = fac.getBean("helloWorld");
+		
+		XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(fac);
+		reader.loadBeanDefinitions(res);
+		
 		obj.setMessage(null);
 		obj.setTestMin("i042416");
 		obj.setTestMin("");
