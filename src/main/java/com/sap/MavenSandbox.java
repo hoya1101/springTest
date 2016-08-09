@@ -12,8 +12,10 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 // Jerry 2016-08-07 16:11PM - this interface should be applied in interface
@@ -33,9 +35,14 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor{
 	}
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-		
+
 		HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
 		Object  object = obj.getBeanFactory().getBean("helloWorld");
+		
+		// Jerry 2016-08-09 16:50PM another approach
+		ClassPathResource res = new ClassPathResource("beans.xml");
+		XmlBeanFactory fac = new XmlBeanFactory(res);
+		Object another = fac.getBean("helloWorld");
 		obj.setMessage(null);
 		obj.setTestMin("i042416");
 		obj.setTestMin("");
