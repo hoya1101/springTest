@@ -1,6 +1,8 @@
 package main.java.com.sap;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -9,8 +11,10 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 
+@Named  
 public class HelloWorld implements BeanNameAware, BeanFactoryAware{
 
 	@NotBlank
@@ -19,18 +23,24 @@ public class HelloWorld implements BeanNameAware, BeanFactoryAware{
 	// "invalid phone number")
 	private String message;
 	
+	@Autowired
+	private User user;
+	
 	private BeanFactory               beanFactory;
 
-	@Size(min = 10, message = "at least 10 char needed!")
-	@Resource
+	//@Size(min = 10, message = "at least 10 char needed!")
+	//@Resource
 	private String testMin = null;
 	
 	@Pattern(regexp = "^(\\+)?(\\d{2,3})?(\\s)?(\\d{11})$", message = "invalid phone number")
 	private String phone = null;
 	
-	@Resource
+	//@Resource
 	private String injectTest;
 	
+	public String getUserName(){
+		return this.user.getName();
+	}
 	public BeanFactory getBeanFactory(){
 		return this.beanFactory;
 	}
@@ -38,7 +48,7 @@ public class HelloWorld implements BeanNameAware, BeanFactoryAware{
 
 	private String withoutInjection;
 
-	@Required  // only be applied in setter
+	//@Required  // only be applied in setter
 	public void setTestMin(String min) {
 		this.testMin = min;
 		System.out.println("setTestMin called: " + min);
@@ -68,5 +78,9 @@ public class HelloWorld implements BeanNameAware, BeanFactoryAware{
 
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
 		this.beanFactory = beanFactory;
+	}
+	
+	public void setuser(User user){
+		this.user = user;
 	}
 }

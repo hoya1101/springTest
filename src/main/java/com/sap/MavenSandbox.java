@@ -12,6 +12,8 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -38,8 +40,9 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor{
 		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 
 		HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
-		Object  object = obj.getBeanFactory().getBean("helloWorld");
-		
+		//Object  object = obj.getBeanFactory().getBean("helloWorld");
+		System.out.println("Name : " + obj.getUserName());
+		AbstractAutowireCapableBeanFactory a = null;
 		// Jerry 2016-08-09 16:50PM another approach
 		ClassPathResource res = new ClassPathResource("beans.xml");
 		XmlBeanFactory fac = new XmlBeanFactory(res);
@@ -56,7 +59,12 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor{
 	    //obj.setTestMin(null);
 	    
 	    // http://stackoverflow.com/questions/24386771/javax-validation-validationexception-hv000183-unable-to-load-javax-el-express
-	    ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
+	    // performValidation(obj);
+		
+	}
+	
+	static public void performValidation(HelloWorld obj){
+		ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
 		Validator validator = vf.getValidator();
 		Set<ConstraintViolation<HelloWorld>> set = validator.validate(obj);
 		System.out.println("Total number of violations: " + set.size());
@@ -65,7 +73,6 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor{
 			System.out.println(constraintViolation.getPropertyPath());
 		}
 	}
-	
 	public String hello(){
 		return "Hello world";
 	}
