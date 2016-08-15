@@ -10,6 +10,7 @@ import javax.validation.ValidatorFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScanBeanDefinitionParser;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
@@ -38,8 +40,11 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 	}
 
 	public static void main(String[] args) {
+		AbstractApplicationContext d = null;
+		FactoryBean e = null;
 		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 
+		System.out.println("calling getBean...");
 		HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
 		// Object object = obj.getBeanFactory().getBean("helloWorld");
 		System.out.println("Name : " + obj.getUserName());

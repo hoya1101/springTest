@@ -10,15 +10,18 @@
 
 	<!-- <context:annotation-config/> -->
 	<context:component-scan base-package="main.java.com.sap" />
-	<!-- 
-	<context:component-scan base-package="main.java.com.sap.bean" /> -->
+	<!-- <context:component-scan base-package="main.java.com.sap.bean" /> -->
 	<!-- </context:component-scan> -->
 
-	<bean id="helloWorld" class="main.java.com.sap.HelloWorld" init-method="initIt"> 
-	<property 
-		name="message" value="sss"/> <property name="testMin" value="2"/> <property 
-		name="phone" value="1"/> </bean> <bean id="user" class="main.java.com.sap.User"> 
-		<property name="mName" value="Jerry"/> </bean>
+	<bean id="helloWorld" class="main.java.com.sap.HelloWorld"
+		init-method="initIt" lazy-init="false">
+		<property name="message" value="sss" />
+		<property name="testMin" value="2" />
+		<property name="phone" value="1" />
+	</bean>
+	<bean id="user" class="main.java.com.sap.User" lazy-init="true">
+		<property name="mName" value="Jerry" />
+	</bean>
 
 
 </beans>
