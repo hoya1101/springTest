@@ -48,6 +48,10 @@ public class HelloWorld implements BeanNameAware, BeanFactoryAware{
 
 	private String withoutInjection;
 
+	public void initIt() throws Exception {
+		  System.out.println("Init method after properties are set : " + message);
+	}
+	
 	//@Required  // only be applied in setter
 	public void setTestMin(String min) {
 		this.testMin = min;
