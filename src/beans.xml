@@ -23,16 +23,38 @@
 		<property name="mName" value="Jerry" />
 	</bean>
 	<bean id="hijackBeforeMethodBean" class="main.java.com.sap.aop.BeForeMethodInjector" />
-	<bean id="helloWorldProxy" lazy-init="true" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<bean id="helloWorldProxy" lazy-init="true"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
 
 		<property name="target" ref="helloWorld" />
 
 		<property name="interceptorNames">
 			<list>
-				<value>hijackBeforeMethodBean</value>
+				<!-- <value>hijackBeforeMethodBean</value> -->
+				<value>advisor</value>
 			</list>
 		</property>
 	</bean>
+	<bean id="Jerrypointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+		<property name="patterns">
+			<list>
+				<value>.*ire.*</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="advisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut" ref="Jerrypointcut" />
+		<property name="advice" ref="hijackBeforeMethodBean" />
+	</bean>
 
+	<bean id="initialTarget" class="main.java.com.sap.bean.Level1Durid" />
+
+	<bean id="swapper" class="org.springframework.aop.target.HotSwappableTargetSource">
+		<constructor-arg ref="initialTarget" />
+	</bean>
+
+	<bean id="swappable" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="targetSource" ref="swapper" />
+	</bean>
 
 </beans>

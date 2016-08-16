@@ -8,7 +8,12 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
 import main.java.com.sap.aop.Durid;
+import main.java.com.sap.bean.Level10Durid;
 
+import org.springframework.aop.framework.ProxyFactoryBean;
+import org.springframework.aop.framework.adapter.DefaultAdvisorAdapterRegistry;
+import org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor;
+import org.springframework.aop.target.HotSwappableTargetSource;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -57,15 +62,38 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		//proxy.printMessage();
 		Durid durid = (Durid)proxy;
 		durid.castFire(5);
+		durid.castStorm();
 		AbstractAutowireCapableBeanFactory a = null;
 		DefaultListableBeanFactory b = null;
 		ComponentScanBeanDefinitionParser c = null;
 
 		// http://stackoverflow.com/questions/24386771/javax-validation-validationexception-hv000183-unable-to-load-javax-el-express
 		// performValidation(obj);
+		ProxyFactoryBean g = null;
+		DefaultAdvisorAdapterRegistry h = null;
+		MethodBeforeAdviceInterceptor i = null;
+		
+		testSwap(context);
+		
 		System.out.println("THE END");
 	}
 
+	static public void testSwap(ApplicationContext context){
+		HotSwappableTargetSource swapper = (HotSwappableTargetSource) context.getBean("swapper");
+		Durid durid = (Durid)swapper.getTarget();
+		// level1
+		durid.castStorm();
+		
+		Level10Durid level10 = new Level10Durid();
+		
+		// this API returns old object
+		durid = (Durid) swapper.swap(level10);
+		System.out.println("after swap...");
+		durid = (Durid)swapper.getTarget();
+		durid.castStorm();
+		//System.out.println("Target :" + swapper.getTargetClass().getCanonicalName());
+		//Object oldTarget = swapper.swap(newTarget);
+	}
 	static public void anotherWayToGetBean() {
 		// Jerry 2016-08-09 16:50PM another approach
 		ClassPathResource res = new ClassPathResource("beans.xml");

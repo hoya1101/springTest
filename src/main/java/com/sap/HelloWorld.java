@@ -92,4 +92,7 @@ public class HelloWorld implements BeanNameAware, BeanFactoryAware, Durid{
 	public void castFire(int num) {
 		System.out.println("In hello world, level 1 FireBall casted:" + num);
 	}
+	public void castStorm() {
+		System.out.println("In hello world, level 1 Storm casted!");
+	}
 }
