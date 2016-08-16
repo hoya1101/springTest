@@ -6,6 +6,8 @@ import javax.inject.Named;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import main.java.com.sap.aop.Durid;
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
@@ -15,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 
 @Named  
-public class HelloWorld implements BeanNameAware, BeanFactoryAware{
+public class HelloWorld implements BeanNameAware, BeanFactoryAware, Durid{
 
 	@NotBlank
 	// @Size(min = 10, message = "at least 10 char needed!")
@@ -86,5 +88,8 @@ public class HelloWorld implements BeanNameAware, BeanFactoryAware{
 	
 	public void setuser(User user){
 		this.user = user;
+	}
+	public void castFire() {
+		System.out.println("In hello world, level 1 FireBall casted!");
 	}
 }

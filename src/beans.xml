@@ -22,6 +22,17 @@
 	<bean id="user" class="main.java.com.sap.User" lazy-init="true">
 		<property name="mName" value="Jerry" />
 	</bean>
+	<bean id="hijackBeforeMethodBean" class="main.java.com.sap.aop.BeForeMethodInjector" />
+	<bean id="helloWorldProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+
+		<property name="target" ref="helloWorld" />
+
+		<property name="interceptorNames">
+			<list>
+				<value>hijackBeforeMethodBean</value>
+			</list>
+		</property>
+	</bean>
 
 
 </beans>

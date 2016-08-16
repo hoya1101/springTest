@@ -7,6 +7,8 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import main.java.com.sap.aop.Durid;
+
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -24,8 +26,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 // Jerry 2016-08-07 16:11PM - this interface should be applied in interface
-
 // Jerry 2016-08-07 16:37PM - @Component - does not work
+// Jerry 2016-08-15 17:25PM - https://www.mkyong.com/spring/spring-aop-examples-advice/
 /*
  * 我们加了@Component注解，在配置文件中需要配置component-scan扫描到这个类，
  * Spring容器会自动查询实现了BeanPostProcessor接口的实现类并执行该接口定义的方法。
@@ -46,14 +48,22 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 
 		System.out.println("calling getBean...");
 		HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
+		
 		// Object object = obj.getBeanFactory().getBean("helloWorld");
 		System.out.println("Name : " + obj.getUserName());
+		//HelloWorld proxy = (HelloWorld) context.getBean("helloWorldProxy");
+		Object proxy = context.getBean("helloWorldProxy");
+		System.out.println("name: " + proxy.getClass().getCanonicalName());
+		//proxy.printMessage();
+		Durid durid = (Durid)proxy;
+		durid.castFire();
 		AbstractAutowireCapableBeanFactory a = null;
 		DefaultListableBeanFactory b = null;
 		ComponentScanBeanDefinitionParser c = null;
 
 		// http://stackoverflow.com/questions/24386771/javax-validation-validationexception-hv000183-unable-to-load-javax-el-express
 		// performValidation(obj);
+		System.out.println("THE END");
 	}
 
 	static public void anotherWayToGetBean() {
