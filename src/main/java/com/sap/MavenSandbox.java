@@ -56,7 +56,7 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		System.out.println("name: " + proxy.getClass().getCanonicalName());
 		//proxy.printMessage();
 		Durid durid = (Durid)proxy;
-		durid.castFire();
+		durid.castFire(5);
 		AbstractAutowireCapableBeanFactory a = null;
 		DefaultListableBeanFactory b = null;
 		ComponentScanBeanDefinitionParser c = null;
