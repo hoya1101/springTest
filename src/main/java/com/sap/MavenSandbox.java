@@ -47,10 +47,10 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 
 		System.out.println("calling getBean...");
-		HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
+		//HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
 		
 		// Object object = obj.getBeanFactory().getBean("helloWorld");
-		System.out.println("Name : " + obj.getUserName());
+		//System.out.println("Name : " + obj.getUserName());
 		//HelloWorld proxy = (HelloWorld) context.getBean("helloWorldProxy");
 		Object proxy = context.getBean("helloWorldProxy");
 		System.out.println("name: " + proxy.getClass().getCanonicalName());
