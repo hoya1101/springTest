@@ -1,5 +1,6 @@
 package main.java.com.sap;
 
+import java.net.URL;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -49,7 +50,9 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 	public static void main(String[] args) {
 		AbstractApplicationContext d = null;
 		FactoryBean e = null;
-		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+		// URL url = MavenSandbox.class.getResource("beans2.xml"); // ok
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 
 		System.out.println("calling getBean...");
 		//HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
