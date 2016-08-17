@@ -80,19 +80,12 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 
 	static public void testSwap(ApplicationContext context){
 		HotSwappableTargetSource swapper = (HotSwappableTargetSource) context.getBean("swapper");
-		Durid durid = (Durid)swapper.getTarget();
-		// level1
-		durid.castStorm();
-		
-		Level10Durid level10 = new Level10Durid();
-		
-		// this API returns old object
-		durid = (Durid) swapper.swap(level10);
-		System.out.println("after swap...");
-		durid = (Durid)swapper.getTarget();
-		durid.castStorm();
-		//System.out.println("Target :" + swapper.getTargetClass().getCanonicalName());
-		//Object oldTarget = swapper.swap(newTarget);
+		Object swapable = context.getBean("swappable");
+		Durid level1Durid = (Durid)swapable;
+		level1Durid.castStorm();
+
+		swapper.swap(new Level10Durid());
+		level1Durid.castStorm();
 	}
 	static public void anotherWayToGetBean() {
 		// Jerry 2016-08-09 16:50PM another approach

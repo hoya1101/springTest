@@ -25,9 +25,7 @@
 	<bean id="hijackBeforeMethodBean" class="main.java.com.sap.aop.BeForeMethodInjector" />
 	<bean id="helloWorldProxy" lazy-init="true"
 		class="org.springframework.aop.framework.ProxyFactoryBean">
-
 		<property name="target" ref="helloWorld" />
-
 		<property name="interceptorNames">
 			<list>
 				<!-- <value>hijackBeforeMethodBean</value> -->
