@@ -9,5 +9,4 @@ public class Level1Durid implements Durid{
 	public void castStorm() {
 		System.out.println("In Level 1 Character, level 1 Storm casted!");
 	}
-
 }
