@@ -35,8 +35,8 @@ import org.springframework.stereotype.Component;
 // Jerry 2016-08-07 16:37PM - @Component - does not work
 // Jerry 2016-08-15 17:25PM - https://www.mkyong.com/spring/spring-aop-examples-advice/
 /*
- * 我们加了@Component注解，在配置文件中需要配置component-scan扫描到这个类，
- * Spring容器会自动查询实现了BeanPostProcessor接口的实现类并执行该接口定义的方法。
+ * 鎴戜滑鍔犱簡@Component娉ㄨВ锛屽湪閰嶇疆鏂囦欢涓渶瑕侀厤缃甤omponent-scan鎵弿鍒拌繖涓被锛�
+ * Spring瀹瑰櫒浼氳嚜鍔ㄦ煡璇㈠疄鐜颁簡BeanPostProcessor鎺ュ彛鐨勫疄鐜扮被骞舵墽琛岃鎺ュ彛瀹氫箟鐨勬柟娉曘��
  */
 @Component
 public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
@@ -53,7 +53,7 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		// URL url = MavenSandbox.class.getResource("beans2.xml"); // ok
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		/*System.out.println("calling getBean...");
+		System.out.println("calling getBean...");
 		//HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
 		
 		// Object object = obj.getBeanFactory().getBean("helloWorld");
@@ -76,7 +76,7 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		MethodBeforeAdviceInterceptor i = null;
 		
 		testSwap(context);
-		*/
+		
 		System.out.println("THE END");
 	}
 
