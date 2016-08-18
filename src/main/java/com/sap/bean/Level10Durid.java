@@ -1,6 +1,6 @@
-package main.java.com.sap.bean;
+package com.sap.bean;
 
-import main.java.com.sap.aop.Durid;
+import com.sap.aop.Durid;
 
 // http://docs.spring.io/spring/docs/current/spring-framework-reference/html/classic-aop-spring.html
 public class Level10Durid implements Durid{

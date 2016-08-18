@@ -1,4 +1,4 @@
-package main.java.com.sap.aop;
+package com.sap.aop;
 
 import java.lang.reflect.Method;
 

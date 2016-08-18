@@ -1,4 +1,4 @@
-package main.java.com.sap;
+package com.sap;
 
 import java.net.URL;
 import java.util.Set;
@@ -8,8 +8,8 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-import main.java.com.sap.aop.Durid;
-import main.java.com.sap.bean.Level10Durid;
+import com.sap.aop.Durid;
+import com.sap.bean.Level10Durid;
 
 import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.aop.framework.adapter.DefaultAdvisorAdapterRegistry;
@@ -53,8 +53,7 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		// URL url = MavenSandbox.class.getResource("beans2.xml"); // ok
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-
-		System.out.println("calling getBean...");
+		/*System.out.println("calling getBean...");
 		//HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
 		
 		// Object object = obj.getBeanFactory().getBean("helloWorld");
@@ -77,7 +76,7 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		MethodBeforeAdviceInterceptor i = null;
 		
 		testSwap(context);
-		
+		*/
 		System.out.println("THE END");
 	}
 

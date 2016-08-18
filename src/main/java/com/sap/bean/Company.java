@@ -1,4 +1,4 @@
-package main.java.com.sap.bean;
+package com.sap.bean;
 
 public class Company {
 	private String compName;

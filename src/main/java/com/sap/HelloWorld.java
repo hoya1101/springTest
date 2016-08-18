@@ -1,4 +1,4 @@
-package main.java.com.sap;
+package com.sap;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -6,7 +6,7 @@ import javax.inject.Named;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import main.java.com.sap.aop.Durid;
+import com.sap.aop.Durid;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.BeansException;

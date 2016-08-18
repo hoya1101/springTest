@@ -1,4 +1,4 @@
-package main.java.com.sap.bean;
+package com.sap.bean;
 
 import javax.annotation.Resource;
 public class Employee {

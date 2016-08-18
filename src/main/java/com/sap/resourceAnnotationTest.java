@@ -1,6 +1,6 @@
-package main.java.com.sap;
+package com.sap;
 
-import main.java.com.sap.bean.Employee;
+import com.sap.bean.Employee;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

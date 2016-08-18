@@ -1,6 +1,6 @@
-package main.java.com.sap.bean;
+package com.sap.bean;
 
-import main.java.com.sap.aop.Durid;
+import com.sap.aop.Durid;
 
 public class Level1Durid implements Durid{
 	public void castFire(int num) {

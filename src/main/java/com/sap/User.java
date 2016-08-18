@@ -1,4 +1,4 @@
-package main.java.com.sap;
+package com.sap;
 
 import javax.inject.Named;
 
