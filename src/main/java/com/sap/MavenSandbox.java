@@ -31,14 +31,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.ContextLoaderListener;
+import org.springframework.web.context.support.XmlWebApplicationContext;
 
 // Jerry 2016-08-07 16:11PM - this interface should be applied in interface
 // Jerry 2016-08-07 16:37PM - @Component - does not work
 // Jerry 2016-08-15 17:25PM - https://www.mkyong.com/spring/spring-aop-examples-advice/
-/*
- * 鎴戜滑鍔犱簡@Component娉ㄨВ锛屽湪閰嶇疆鏂囦欢涓渶瑕侀厤缃甤omponent-scan鎵弿鍒拌繖涓被锛�
- * Spring瀹瑰櫒浼氳嚜鍔ㄦ煡璇㈠疄鐜颁簡BeanPostProcessor鎺ュ彛鐨勫疄鐜扮被骞舵墽琛岃鎺ュ彛瀹氫箟鐨勬柟娉曘��
- */
+
 @Component
 public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 
@@ -73,7 +71,11 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		// http://stackoverflow.com/questions/24386771/javax-validation-validationexception-hv000183-unable-to-load-javax-el-express
 		// performValidation(obj);
 
-		ContextLoaderListener h  = null;
+		/*
+		 * XmlWebApplicationContext is the default implementation of interface WebApplicationContext, used as IoC container.
+		 */
+		XmlWebApplicationContext h  = null;
+		
 		
 		testSwap(context);
 		
