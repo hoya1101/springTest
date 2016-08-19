@@ -10,13 +10,11 @@
 			<param-value>classpath:beans.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<!--  
+	</servlet>  
 	<servlet-mapping>
-      <servlet-name>HelloWeb</servlet-name>
+      <servlet-name>SpringMVC</servlet-name>
       <url-pattern>/</url-pattern>
    </servlet-mapping>
-   -->
 	<!--
 	http://stackoverflow.com/questions/25853804/how-to-resolve-beandefinitionstoreexception-ioexception-parsing-xml-document-fr 
 	 -->
