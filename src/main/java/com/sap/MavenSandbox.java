@@ -30,6 +30,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.ContextLoaderListener;
 
 // Jerry 2016-08-07 16:11PM - this interface should be applied in interface
 // Jerry 2016-08-07 16:37PM - @Component - does not work
@@ -71,9 +72,8 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 
 		// http://stackoverflow.com/questions/24386771/javax-validation-validationexception-hv000183-unable-to-load-javax-el-express
 		// performValidation(obj);
-		ProxyFactoryBean g = null;
-		DefaultAdvisorAdapterRegistry h = null;
-		MethodBeforeAdviceInterceptor i = null;
+
+		ContextLoaderListener h  = null;
 		
 		testSwap(context);
 		
