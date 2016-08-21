@@ -1,6 +1,5 @@
 package com.sap;
 
-import java.net.URL;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -10,10 +9,6 @@ import javax.validation.ValidatorFactory;
 
 import com.sap.aop.Durid;
 import com.sap.bean.Level10Durid;
-
-import org.springframework.aop.framework.ProxyFactoryBean;
-import org.springframework.aop.framework.adapter.DefaultAdvisorAdapterRegistry;
-import org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor;
 import org.springframework.aop.target.HotSwappableTargetSource;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
@@ -30,7 +25,6 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.XmlWebApplicationContext;
 
 // Jerry 2016-08-07 16:11PM - this interface should be applied in interface
@@ -47,8 +41,6 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 	}
 
 	public static void main(String[] args) {
-		AbstractApplicationContext d = null;
-		FactoryBean e = null;
 		// URL url = MavenSandbox.class.getResource("beans2.xml"); // ok
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
@@ -64,10 +56,6 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		Durid durid = (Durid)proxy;
 		durid.castFire(5);
 		durid.castStorm();
-		AbstractAutowireCapableBeanFactory a = null;
-		DefaultListableBeanFactory b = null;
-		ComponentScanBeanDefinitionParser c = null;
-		org.springframework.web.servlet.DispatcherServlet servlet = null;
 
 		// http://stackoverflow.com/questions/24386771/javax-validation-validationexception-hv000183-unable-to-load-javax-el-express
 		// performValidation(obj);
@@ -75,8 +63,6 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		/*
 		 * XmlWebApplicationContext is the default implementation of interface WebApplicationContext, used as IoC container.
 		 */
-		XmlWebApplicationContext h  = null;
-		
 		
 		testSwap(context);
 		

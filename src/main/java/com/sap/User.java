@@ -2,8 +2,6 @@ package com.sap;
 
 import javax.inject.Named;
 
-import org.springframework.stereotype.Component;
-
 @Named  
 public class User {
 	private String mName;
