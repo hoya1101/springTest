@@ -67,6 +67,7 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		AbstractAutowireCapableBeanFactory a = null;
 		DefaultListableBeanFactory b = null;
 		ComponentScanBeanDefinitionParser c = null;
+		org.springframework.web.servlet.DispatcherServlet servlet = null;
 
 		// http://stackoverflow.com/questions/24386771/javax-validation-validationexception-hv000183-unable-to-load-javax-el-express
 		// performValidation(obj);

@@ -9,6 +9,7 @@
 	<configs>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/spring-Jerrycontext.xml</config>
 		<config>src/main/resources/beans.xml</config>
 	</autoconfigs>
 	<configSets>
