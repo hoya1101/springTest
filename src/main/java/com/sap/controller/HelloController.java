@@ -17,14 +17,7 @@ public class HelloController {
 	@RequestMapping("test1")
 	public String home(){
 		System.out.println("Jerry test1!");
-		org.springframework.web.method.HandlerMethod a = null;
 		return "hello";
-	}
-	
-	@RequestMapping("")
-	public String fuck3(){
-		System.out.println("Jerry test default page!");
-		return "hello.jsp";
 	}
 	
 	@RequestMapping(value="test2")
