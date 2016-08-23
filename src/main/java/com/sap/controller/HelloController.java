@@ -3,12 +3,13 @@ package com.sap.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.AbstractUrlHandlerMapping;
+import org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping;
 import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 import org.springframework.ui.ModelMap;
 
@@ -42,8 +43,7 @@ public class HelloController {
 	@RequestMapping("test3")
 	@ResponseBody
 		public Map<String, String> json(){
-	//public String json(){
-		RequestResponseBodyMethodProcessor a = null;
+		DispatcherServlet a = null;
 
 			Map<String, String> result = new HashMap<String, String>();
 			result.put("Scala", "hello");
