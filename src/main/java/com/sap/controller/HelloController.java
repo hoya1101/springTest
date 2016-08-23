@@ -41,22 +41,17 @@ public class HelloController {
 	
 	@RequestMapping("test3")
 	@ResponseBody
-		//public Map<String, String> json(){
-	public String json(){
+		public Map<String, String> json(){
+	//public String json(){
 		RequestResponseBodyMethodProcessor a = null;
-		Log logger = LogFactory.getLog(RequestResponseBodyMethodProcessor.class);
-		System.out.println("Debug enabled?:" + logger.isDebugEnabled());
-		System.out.println("trace enabled?:" + logger.isTraceEnabled());
-		
-		Log m_log = LogFactory.getLog("MyClassLogger");
-		System.out.println("Debug enabled?:" + m_log.isDebugEnabled());
-		System.out.println("trace enabled?:" + m_log.isTraceEnabled());
+
 			Map<String, String> result = new HashMap<String, String>();
 			result.put("Scala", "hello");
 			result.put("ABAP", "world");
 			result.put("Java", "greet");
 			System.out.println("test!!!");
-			return "Pure string";
+			return result;
+			//return "Pure string";
 		}
 }
 
