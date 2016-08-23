@@ -2,10 +2,14 @@ package com.sap.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 import org.springframework.ui.ModelMap;
 
 
@@ -39,6 +43,14 @@ public class HelloController {
 	@ResponseBody
 		//public Map<String, String> json(){
 	public String json(){
+		RequestResponseBodyMethodProcessor a = null;
+		Log logger = LogFactory.getLog(RequestResponseBodyMethodProcessor.class);
+		System.out.println("Debug enabled?:" + logger.isDebugEnabled());
+		System.out.println("trace enabled?:" + logger.isTraceEnabled());
+		
+		Log m_log = LogFactory.getLog("MyClassLogger");
+		System.out.println("Debug enabled?:" + m_log.isDebugEnabled());
+		System.out.println("trace enabled?:" + m_log.isTraceEnabled());
 			Map<String, String> result = new HashMap<String, String>();
 			result.put("Scala", "hello");
 			result.put("ABAP", "world");
