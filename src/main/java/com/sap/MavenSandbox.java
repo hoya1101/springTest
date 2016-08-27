@@ -1,5 +1,6 @@
 package com.sap;
 
+import java.util.Arrays;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -9,6 +10,7 @@ import javax.validation.ValidatorFactory;
 
 import com.sap.aop.Durid;
 import com.sap.bean.Level10Durid;
+
 import org.springframework.aop.target.HotSwappableTargetSource;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
@@ -65,10 +67,18 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		 */
 		
 		testSwap(context);
-		
+		testContext(context);
 		System.out.println("THE END");
 	}
 
+	static public void testContext(ApplicationContext context){
+		System.out.println("testContext......");
+		String[] beanNames = context.getBeanDefinitionNames();
+        Arrays.sort(beanNames);
+        for (String beanName : beanNames) {
+            System.out.println(beanName);
+        }
+	}
 	static public void testSwap(ApplicationContext context){
 		HotSwappableTargetSource swapper = (HotSwappableTargetSource) context.getBean("swapper");
 		Object swapable = context.getBean("swappable");
