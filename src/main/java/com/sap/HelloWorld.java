@@ -1,20 +1,15 @@
 package com.sap;
 
-import javax.annotation.Resource;
-import javax.inject.Inject;
+
 import javax.inject.Named;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
 import com.sap.aop.Durid;
-
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 
 @Named  
 public class HelloWorld implements BeanNameAware, BeanFactoryAware, Durid{

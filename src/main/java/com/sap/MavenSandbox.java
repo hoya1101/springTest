@@ -15,19 +15,13 @@ import org.springframework.aop.target.HotSwappableTargetSource;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScanBeanDefinitionParser;
-import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.support.XmlWebApplicationContext;
 
 // Jerry 2016-08-07 16:11PM - this interface should be applied in interface
 // Jerry 2016-08-07 16:37PM - @Component - does not work
@@ -47,7 +41,7 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		System.out.println("calling getBean...");
-		//HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
+		HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
 		
 		// Object object = obj.getBeanFactory().getBean("helloWorld");
 		//System.out.println("Name : " + obj.getUserName());
