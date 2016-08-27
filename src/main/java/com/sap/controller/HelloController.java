@@ -38,8 +38,8 @@ public class HelloController {
 	@RequestMapping(value = "/doc/{documentId}", method = RequestMethod.GET, produces = { "application/pdf", "text/html" })
     public void getDocumentById(@PathVariable("documentId") String documentId,
             HttpServletResponse response,
-            @RequestParam(value = "type", defaultValue = "html") String outputType) throws IOException {
-        String html = "<html><p>I042416</p></html>";
+            @RequestParam(value = "type", defaultValue = "xml") String outputType) throws IOException {
+        String html = "<html><p>I042416" + "-" + documentId + "</p></html>";
         response.reset();
         if ("html".equals(outputType)) {
             //html = documentService.queryDocumentById(documentId).getInternalDocumentFile();
@@ -62,7 +62,7 @@ public class HelloController {
 	@ResponseBody
 		public Map<String, String> json(){
 		DispatcherServlet a = null;
-
+ 
 			Map<String, String> result = new HashMap<String, String>();
 			result.put("Scala", "hello");
 			result.put("ABAP", "world");
