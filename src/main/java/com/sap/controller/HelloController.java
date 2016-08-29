@@ -1,6 +1,10 @@
 package com.sap.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
@@ -97,8 +101,6 @@ public class HelloController {
 	@RequestMapping("test3")
 	@ResponseBody
 		public Map<String, String> json(){
-		DispatcherServlet a = null;
- 
 			Map<String, String> result = new HashMap<String, String>();
 			result.put("Scala", "hello");
 			result.put("ABAP", "world");
@@ -109,17 +111,34 @@ public class HelloController {
 		}
 	
 	@RequestMapping(value = "upload", method = RequestMethod.POST)
-    public void postPic(@RequestPart("picContent111") MultipartFile picContent111,
+    public ModelAndView postPic(@RequestPart("picContent111") MultipartFile picContent111,
             HttpServletRequest request) throws IOException {
 
         if (!picContent111.getContentType().startsWith("image/")) {
             System.out.println("image file is not present");
         }
         
-        String url = request.getRequestURL().toString() + "/" + "Jerry";
-        URI location = UriComponentsBuilder.fromHttpUrl(url).build().toUri();
-        Object result = ResponseEntity.created(location).body(location);
-        RequestPartMethodArgumentResolver a = null;
+        ModelAndView model = new ModelAndView("uploaded");
+        
+        String content = getUploadedContentFromStream(picContent111.getInputStream());
+        
+		model.getModelMap().addAttribute("content", content);
+		
+		return model;
     }
+	
+	private String getUploadedContentFromStream(InputStream inputStream) throws IOException{
+		final int bufferSize = 1024;
+		final char[] buffer = new char[bufferSize];
+		final StringBuilder out = new StringBuilder();
+		Reader in = new InputStreamReader(inputStream, "UTF-8");
+		for (; ; ) {
+		    int rsz = in.read(buffer, 0, buffer.length);
+		    if (rsz < 0)
+		        break;
+		    out.append(buffer, 0, rsz);
+		}
+		return out.toString();
+	}
 }
 
