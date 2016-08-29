@@ -20,6 +20,7 @@
 	<bean id="user" class="com.sap.User" lazy-init="true">
 		<property name="mName" value="Jerry" />
 	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	<bean id="hijackBeforeMethodBean" class="com.sap.aop.BeForeMethodInjector" />
 	<bean id="helloWorldProxy" lazy-init="true"
 		class="org.springframework.aop.framework.ProxyFactoryBean">

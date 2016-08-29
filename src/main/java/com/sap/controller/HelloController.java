@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,12 +19,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.ui.ModelMap;
-
 
 @Controller
 @RequestMapping("/mvc")
@@ -33,10 +36,6 @@ public class HelloController {
 	@RequestMapping("test1")
 	public String home(){
 		System.out.println("Jerry test1!");
-		// 2016-08-28 13:15PM test
-		// String[] result = {};
-		// System.out.println(result[2]);
-		
 		return "hello";
 	}
 	
@@ -107,5 +106,18 @@ public class HelloController {
 			return result;
 			//return "Pure string";
 		}
+	
+	@RequestMapping(value = "upload", method = RequestMethod.POST)
+    public void postPic(@RequestPart("picContent") MultipartFile picContent,
+            HttpServletRequest request) throws IOException {
+
+        if (!picContent.getContentType().startsWith("image/")) {
+            System.out.println("image file is not present");
+        }
+        
+        String url = request.getRequestURL().toString() + "/" + "Jerry";
+        URI location = UriComponentsBuilder.fromHttpUrl(url).build().toUri();
+        Object result = ResponseEntity.created(location).body(location);
+    }
 }
 
