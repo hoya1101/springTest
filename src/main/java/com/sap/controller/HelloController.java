@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.RequestPartMethodArgumentResolver;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.ui.ModelMap;
 
@@ -108,16 +109,17 @@ public class HelloController {
 		}
 	
 	@RequestMapping(value = "upload", method = RequestMethod.POST)
-    public void postPic(@RequestPart("picContent") MultipartFile picContent,
+    public void postPic(@RequestPart("picContent111") MultipartFile picContent111,
             HttpServletRequest request) throws IOException {
 
-        if (!picContent.getContentType().startsWith("image/")) {
+        if (!picContent111.getContentType().startsWith("image/")) {
             System.out.println("image file is not present");
         }
         
         String url = request.getRequestURL().toString() + "/" + "Jerry";
         URI location = UriComponentsBuilder.fromHttpUrl(url).build().toUri();
         Object result = ResponseEntity.created(location).body(location);
+        RequestPartMethodArgumentResolver a = null;
     }
 }
 
