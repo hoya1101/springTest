@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Generic Error Page</title>
+<title>Generic Error Page of Jerry</title>
 </head>
 <body>
 
-<h2>Unknown Error Occured, please contact support.</h2>
+<h2>Unknown Error Occured, please contact Wang, Jerry.</h2>
 
 </body>
 </html>

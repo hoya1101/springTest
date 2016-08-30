@@ -39,8 +39,12 @@ import org.springframework.ui.ModelMap;
 public class HelloController {
 	
 	@RequestMapping("test1")
-	public String home(){
+	public String home() throws Exception{
 		System.out.println("Jerry test1!");
+		
+		if(1 == 1) {
+			throw new Exception("Generic Exception raised by Jerry");
+		}
 		return "hello";
 	}
 	
