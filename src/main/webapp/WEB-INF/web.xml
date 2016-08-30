@@ -13,6 +13,10 @@
 	<servlet>
 		<servlet-name>SpringMVC</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>		 
+		<init-param>
+        <param-name>throwExceptionIfNoHandlerFound</param-name>
+        <param-value>true</param-value>
+    </init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SpringMVC</servlet-name>
@@ -22,5 +26,9 @@
 	<welcome-file-list>
 	<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
-	
+	 
+	<error-page>
+		<error-code>404</error-code>
+		<location>/resources/404.jsp</location>
+	</error-page>
 </web-app>
