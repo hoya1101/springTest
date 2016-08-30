@@ -9,6 +9,7 @@
 <body>
 
 <h2>Unknown Error Occured, please contact Wang, Jerry.</h2>
+<h3>${exception}</h3>
 
 </body>
 </html>
