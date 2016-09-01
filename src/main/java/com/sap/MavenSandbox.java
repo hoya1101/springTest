@@ -40,9 +40,9 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		// URL url = MavenSandbox.class.getResource("beans2.xml"); // ok
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		System.out.println("calling getBean...");
+
 		HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
-		
+		System.out.println("Equal? " + ( obj == obj.getUser().getHelloWorld()));
 		// Object object = obj.getBeanFactory().getBean("helloWorld");
 		//System.out.println("Name : " + obj.getUserName());
 		//HelloWorld proxy = (HelloWorld) context.getBean("helloWorldProxy");
@@ -61,7 +61,7 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		 */
 		
 		testSwap(context);
-		testContext(context);
+		// testContext(context);
 		System.out.println("THE END");
 	}
 
