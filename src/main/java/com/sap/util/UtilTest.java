@@ -11,7 +11,17 @@ import java.util.List;
 
 class Staff {
 
+	public Staff(String c){
+		this.setCanthisAlsobeSerialized(c);
+	}
 	private String name;
+	private String canthisAlsobeSerialized;
+	public String getCanthisAlsobeSerialized() {
+		return canthisAlsobeSerialized;
+	}
+	private void setCanthisAlsobeSerialized(String canthisAlsobeSerialized) {
+		this.canthisAlsobeSerialized = canthisAlsobeSerialized;
+	}
 	public String getName() {
 		return name;
 	}
@@ -54,7 +64,7 @@ public class UtilTest{
 	
 	private Staff createDummyObject() {
 
-		Staff staff = new Staff();
+		Staff staff = new Staff("i042416");
 
 		staff.setName("mkyong");
 		staff.setAge(33);
@@ -65,6 +75,7 @@ public class UtilTest{
 		skills.add("java");
 		skills.add("python");
 
+		
 		staff.setSkills(skills);
 
 		return staff;
