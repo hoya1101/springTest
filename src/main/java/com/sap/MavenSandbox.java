@@ -7,10 +7,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-
 import com.sap.aop.Durid;
 import com.sap.bean.Level10Durid;
-
 import org.springframework.aop.target.HotSwappableTargetSource;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
@@ -92,6 +90,7 @@ public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 		reader.loadBeanDefinitions(res);
 	}
 
+	
 	static public void performValidation(HelloWorld obj) {
 		obj.setMessage(null);
 		obj.setTestMin("i042416");

@@ -58,12 +58,20 @@ public class HelloController {
 		return model;
 	}
 	
+	// maps to Content-Type in http header
 	@RequestMapping(value="i042416", method = RequestMethod.POST, 
 			consumes = { "application/json" })
 	@ResponseBody
 	public String postTemplate(@Valid @RequestBody String template, HttpServletRequest request) {
         System.out.println(template);
         // HttpMediaTypeNotSupportedException a = null;
+        
+        final String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+        System.out.println("extraction from request: " + url);
+        StringBuffer requestURL = request.getRequestURL();
+        String queryString = request.getQueryString();
+        System.out.println("request url: " + requestURL + " query url: " + queryString);
+        System.out.println("request toString: " + request.toString());
         return template;
     }
 	
