@@ -1,0 +1,9 @@
+{
+    "country":"USA",   
+    "countryInfo":{"golden":40,"silver":23,"copper":33,"tank":1},  
+	"countryDetail":[  
+    {"id":"no","header":"ID","fieldIndex":"no","sortOrder":null,"printable":true},  
+    {"id":"name","header":"Name","fieldIndex":"name","sortOrder":null,"printable":true},  
+    {"id":"total","header":"Total Score","fieldIndex":"total","sortOrder":null,"printable":true},  
+    {"id":"detail","header":"Detail","fieldIndex":"detail","sortOrder":null,"printable":true}  
+   ], "orgood":true}

@@ -14,6 +14,10 @@ class Staff {
 	public Staff(String c){
 		this.setCanthisAlsobeSerialized(c);
 	}
+	
+	public Staff(){
+		this.setCanthisAlsobeSerialized("abap");
+	}
 	private String name;
 	private String canthisAlsobeSerialized;
 	public String getCanthisAlsobeSerialized() {
@@ -81,8 +85,35 @@ public class UtilTest{
 		return staff;
 
 	}
+	
+	private void JsonToObject(){
+		ObjectMapper mapper = new ObjectMapper();
 
-	private void testJson(){
+		try {
+
+			// Convert JSON string from file to Object
+			Staff staff = mapper.readValue(new File("c:\\temp\\staff.json"), Staff.class);
+			System.out.println(staff);
+
+			// Convert JSON string to Object
+			String jsonInString = "{\"name\":\"mkyong\",\"salary\":7500,\"skills\":[\"java\",\"python\"]}";
+			Staff staff1 = mapper.readValue(jsonInString, Staff.class);
+			System.out.println(staff1);
+
+			//Pretty print
+			String prettyStaff1 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(staff1);
+			System.out.println(prettyStaff1);
+
+		} catch (JsonGenerationException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void objectToJson(){
 		ObjectMapper mapper = new ObjectMapper();
 
 		Staff staff = createDummyObject();
@@ -109,6 +140,6 @@ public class UtilTest{
 	}
 	public static void main(String[] arg){
 		UtilTest url = new UtilTest();
-		url.testJson();
+		url.JsonToObject();
 	}
 }
