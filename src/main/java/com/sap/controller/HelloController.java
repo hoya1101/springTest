@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,9 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,15 +20,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.method.annotation.RequestPartMethodArgumentResolver;
-import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.ui.ModelMap;
 
-@Controller
+@RestController
 @RequestMapping("/mvc")
 
 public class HelloController {
@@ -42,7 +34,7 @@ public class HelloController {
 	public String home() throws Exception{
 		System.out.println("Jerry test1!");
 		
-		if(1 == 1) {
+		if(0 == 1) {
 			throw new Exception("Generic Exception raised by Jerry");
 		}
 		return "hello";
@@ -80,6 +72,17 @@ public class HelloController {
 	      model.addAttribute("message", "Hello Spring MVC Framework!");
 	      System.out.println("Jerry: my Controller gets called! test2");
 	      return "hellowithModel";
+	   }
+	
+	/*@RequestMapping(value="/{templateId}")
+	  public String testParameter(@PathVariable("templateId") String id) {
+	      return "value is: " + id;
+	   }*/
+	
+	// @RequestParam("name")
+	@RequestMapping(value="/hello")
+	  public String testRequestParam(@RequestParam String name) {
+	      return "test Request Param: " + name;
 	   }
 	
 	@RequestMapping(value = "/doc/{documentId}", method = RequestMethod.GET, produces = { "application/pdf", "text/html" })
@@ -133,7 +136,7 @@ public class HelloController {
         ModelAndView model = new ModelAndView("uploaded");
         
         String content = getUploadedContentFromStream(picContent111.getInputStream());
-        
+        System.out.println("uploaded content: " + content);
 		model.getModelMap().addAttribute("content", content);
 		
 		return model;
