@@ -1,17 +1,16 @@
 package com.sap.cache;
 
-import java.util.logging.Logger;
+import java.util.Optional;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.logging.LogFactory;
-
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AccountService1 {
-	private final Logger logger = (Logger) LogFactory.getLog(AccountService1.class);
-	 
-    @Resource
+	private final Logger logger = LoggerFactory.getLogger(AccountService1.class);
+    
+	@Resource
     private CacheContext<Account> accountCacheContext;
  
     public Account getAccountByName(String accountName) {
@@ -38,6 +37,6 @@ public class AccountService1 {
     private Optional<Account> getFromDB(String accountName) {
         logger.info("real querying db... {}", accountName);
         //Todo query data from database
-        return Optional.fromNullable(new Account(accountName));
+        return Optional.ofNullable(new Account(accountName));
     }
 }
