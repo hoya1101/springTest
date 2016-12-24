@@ -15,7 +15,7 @@ public class AccountService1Test {
  
     @Before
     public void setUp() throws Exception {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext1.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         accountService1 = context.getBean("accountService1", AccountService1.class);
     }
  
