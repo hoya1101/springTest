@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class AccountService1 {
+	
+	// 使用时只要把相应的jar包（只有一个）放到类路径上即可。
 	private final Logger logger = LoggerFactory.getLogger(AccountService1.class);
     
 	@Resource
@@ -16,6 +18,7 @@ public class AccountService1 {
     public Account getAccountByName(String accountName) {
         Account result = accountCacheContext.get(accountName);
         if (result != null) {
+        	System.out.println("get from Cache: " + accountName);
             logger.info("get from cache... {}", accountName);
             return result;
         }
@@ -36,6 +39,7 @@ public class AccountService1 {
  
     private Optional<Account> getFromDB(String accountName) {
         logger.info("real querying db... {}", accountName);
+        System.out.println("read querying db...: " + accountName);
         //Todo query data from database
         return Optional.ofNullable(new Account(accountName));
     }
