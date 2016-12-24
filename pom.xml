@@ -19,7 +19,7 @@
 			<artifactId>jersey-media-json-jackson</artifactId>
 			<version>2.22</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
@@ -42,7 +42,7 @@
 			<artifactId>flying-saucer-pdf</artifactId>
 			<version>9.0.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -116,49 +116,49 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>4.2.6.RELEASE</version>
 		</dependency>
-		
+
 		<!-- remove the real commons-logging from classpath -->
-<!-- declare as provided or exclude from spring jars -->
-<dependency>
-    <artifactId>commons-logging</artifactId>
-    <groupId>commons-logging</groupId>
-    <version>1.0</version>
-    <scope>provided</scope>
-</dependency>
+		<!-- declare as provided or exclude from spring jars -->
+		<dependency>
+			<artifactId>commons-logging</artifactId>
+			<groupId>commons-logging</groupId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
 
-<!-- add slf4j interfaces to classpath -->
-<dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-api</artifactId>
-    <version>1.6.4</version>
-    <scope>compile</scope>
-</dependency>
+		<!-- add slf4j interfaces to classpath -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.4</version>
+			<scope>compile</scope>
+		</dependency>
 
-<!-- add commons logging to slf4j bridge to classpath --> 
-<!-- acts as jcl but routes commons-logging calls to slf4j -->
-<dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>jcl-over-slf4j</artifactId>
-    <version>1.6.4</version>
-    <scope>runtime</scope>
-</dependency>
+		<!-- add commons logging to slf4j bridge to classpath -->
+		<!-- acts as jcl but routes commons-logging calls to slf4j -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.6.4</version>
+			<scope>runtime</scope>
+		</dependency>
 
-<!-- add log4j binding to classpath -->
-<!-- routes slf4j calls to log4j -->
-<dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-log4j12</artifactId>
-    <version>1.6.4</version>
-    <scope>runtime</scope>
-</dependency>
+		<!-- add log4j binding to classpath -->
+		<!-- routes slf4j calls to log4j -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.4</version>
+			<scope>runtime</scope>
+		</dependency>
 
-<!-- add log4j to classpath -->
-<!-- does the logging -->
-<dependency>
-    <groupId>log4j</groupId>
-    <artifactId>log4j</artifactId>
-    <version>1.2.16</version>
-</dependency>
+		<!-- add log4j to classpath -->
+		<!-- does the logging -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
 
 	</dependencies>
 	<build>
@@ -172,6 +172,19 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.14.1</version>
+				<configuration>
+					<systemPropertyVariables>
+						<log4j.configuration>log4j.properties</log4j.configuration>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+
+
 		</plugins>
 	</build>
 	<packaging>war</packaging>
