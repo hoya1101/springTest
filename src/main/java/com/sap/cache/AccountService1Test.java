@@ -7,7 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import static org.junit.Assert.*;
 
-
+/*
+ * Jerry 2016-12-25 13:15PM still works?
+ * System.setProperty("log4j.configuration", "log4j.properties");
+ */
 public class AccountService1Test {
 	private AccountService1 accountService1;
 	 

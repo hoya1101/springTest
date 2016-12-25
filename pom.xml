@@ -126,7 +126,12 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- add slf4j interfaces to classpath -->
+		<!-- add slf4j interfaces to classpath 
+		
+		他只提供一个核心slf4j api(就是slf4j-api.jar包)，
+		这个包只有日志的接口，并没有实现，所以如果要使用就得再给它提供一个
+		实现了些接口的日志包
+		-->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -172,7 +177,9 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-
+<!--  Jerry 2016-12-25 13:17PM - if I commented out this part, there is
+no syntax error but no log is printed out in console.
+-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
