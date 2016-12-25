@@ -119,19 +119,11 @@
 
 		<!-- remove the real commons-logging from classpath -->
 		<!-- declare as provided or exclude from spring jars -->
-		<dependency>
-			<artifactId>commons-logging</artifactId>
-			<groupId>commons-logging</groupId>
-			<version>1.0</version>
-			<scope>provided</scope>
-		</dependency>
+		<!-- <dependency> <artifactId>commons-logging</artifactId> <groupId>commons-logging</groupId> 
+			<version>1.0</version> <scope>provided</scope> </dependency> -->
 
-		<!-- add slf4j interfaces to classpath 
-		
-		他只提供一个核心slf4j api(就是slf4j-api.jar包)，
-		这个包只有日志的接口，并没有实现，所以如果要使用就得再给它提供一个
-		实现了些接口的日志包
-		-->
+		<!-- add slf4j interfaces to classpath 他只提供一个核心slf4j api(就是slf4j-api.jar包)， 
+			这个包只有日志的接口，并没有实现，所以如果要使用就得再给它提供一个 实现了些接口的日志包 -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -141,28 +133,35 @@
 
 		<!-- add commons logging to slf4j bridge to classpath -->
 		<!-- acts as jcl but routes commons-logging calls to slf4j -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>1.6.4</version>
-			<scope>runtime</scope>
-		</dependency>
+		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>jcl-over-slf4j</artifactId> 
+			<version>1.6.4</version> <scope>runtime</scope> </dependency> -->
+
 
 		<!-- add log4j binding to classpath -->
 		<!-- routes slf4j calls to log4j -->
+		<!-- 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.6.4</version>
 			<scope>runtime</scope>
 		</dependency>
+		 -->
 
 		<!-- add log4j to classpath -->
 		<!-- does the logging -->
+		<!--  
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.16</version>
+		</dependency>
+-->
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.6.4</version>
 		</dependency>
 
 	</dependencies>
@@ -177,20 +176,9 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-<!--  Jerry 2016-12-25 13:17PM - if I commented out this part, there is
-no syntax error but no log is printed out in console.
--->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.14.1</version>
-				<configuration>
-					<systemPropertyVariables>
-						<log4j.configuration>log4j.properties</log4j.configuration>
-					</systemPropertyVariables>
-				</configuration>
-			</plugin>
-
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-surefire-plugin</artifactId> 
+				<version>2.14.1</version> <configuration> <systemPropertyVariables> <log4j.configuration>log4j.properties</log4j.configuration> 
+				</systemPropertyVariables> </configuration> </plugin> -->
 
 		</plugins>
 	</build>

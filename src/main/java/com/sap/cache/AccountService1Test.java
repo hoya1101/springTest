@@ -12,6 +12,13 @@ import static org.junit.Assert.*;
  * System.setProperty("log4j.configuration", "log4j.properties");
  */
 public class AccountService1Test {
+	
+	static {
+
+	    // System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "trace");
+		// System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "debug");
+	}
+	
 	private AccountService1 accountService1;
 	 
     private final Logger logger = LoggerFactory.getLogger(AccountService1Test.class);
