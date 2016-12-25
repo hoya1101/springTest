@@ -46,6 +46,8 @@
 
 	<bean id="initialTarget" class="com.sap.bean.Level1Durid" />
 	
+	<bean id="cacheContext" class="com.sap.cache.CacheContext" />
+	
 	<bean id="accountService1" class="com.sap.cache.AccountService1" />
 
 	<bean id="swapper" class="org.springframework.aop.target.HotSwappableTargetSource">
