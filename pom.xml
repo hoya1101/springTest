@@ -127,7 +127,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.6.4</version>
+			<version>1.7.5</version>
 			<scope>compile</scope>
 		</dependency>
 
@@ -139,29 +139,21 @@
 
 		<!-- add log4j binding to classpath -->
 		<!-- routes slf4j calls to log4j -->
-		<!-- 
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.4</version>
-			<scope>runtime</scope>
-		</dependency>
-		 -->
+
+		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> 
+			<version>1.6.4</version> <scope>runtime</scope> </dependency> -->
+
 
 		<!-- add log4j to classpath -->
 		<!-- does the logging -->
-		<!--  
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
-		</dependency>
--->
+		<!-- <dependency> <groupId>log4j</groupId> <artifactId>log4j</artifactId> 
+			<version>1.2.16</version> </dependency> -->
+
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
-			<version>1.6.4</version>
+			<version>1.7.5</version>
 		</dependency>
 
 	</dependencies>
@@ -180,6 +172,18 @@
 				<version>2.14.1</version> <configuration> <systemPropertyVariables> <log4j.configuration>log4j.properties</log4j.configuration> 
 				</systemPropertyVariables> </configuration> </plugin> -->
 
+		<!--  does not work 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.14.1</version>
+				<configuration>
+					<systemPropertyVariables>
+						<simplelogger.configuration>simplelogger.properties</simplelogger.configuration>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+-->
 		</plugins>
 	</build>
 	<packaging>war</packaging>

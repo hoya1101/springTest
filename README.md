@@ -27,3 +27,5 @@ solution see [here](http://stackoverflow.com/questions/16726457/log4jwarn-no-app
 其实slf4j原理很简单，他只提供一个核心slf4j api(就是slf4j-api.jar包)，这个包只有日志的接口，并没有实现，
 所以如果要使用就得再给它提供一个实现了些接口的日志包，比 如：log4j,common logging,jdk log日志实现包等，
 
+this [blog](https://dzone.com/articles/how-configure-slf4j-different) is helpful. 
+

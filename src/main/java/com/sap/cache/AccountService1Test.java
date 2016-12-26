@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import static org.junit.Assert.*;
+import org.slf4j.impl.*;
 
 /*
  * Jerry 2016-12-25 13:15PM still works?
@@ -15,8 +16,11 @@ public class AccountService1Test {
 	
 	static {
 
-	    // System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "trace");
-		// System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "debug");
+	    System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "trace");
+		System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "debug");
+		
+		
+		// System.setProperty(org.slf4j.impl.SimpleLogger. SimpleLogger. DEFAULT_LOG_LEVEL_KEY, "TRACE");
 	}
 	
 	private AccountService1 accountService1;
@@ -40,8 +44,9 @@ public class AccountService1Test {
         accountService1.getAccountByName("accountName");
  
         accountService1.reload();
-        logger.info("after reload ....");
- 
+        logger.debug("after reload ....");
+        logger.info("after reload info ....");
+        
         accountService1.getAccountByName("accountName");
         accountService1.getAccountByName("accountName");
     }
