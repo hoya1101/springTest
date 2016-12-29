@@ -29,3 +29,14 @@ solution see [here](http://stackoverflow.com/questions/16726457/log4jwarn-no-app
 
 this [blog](https://dzone.com/articles/how-configure-slf4j-different) is helpful. 
 
+# 2016-12-26
+[difference between class path and build path](http://stackoverflow.com/questions/3529459/what-is-the-difference-between-class-path-and-build-path)
+
+The build path is used for building your application. It contains all of your source files and all Java libraries that are required to compile the application.
+The classpath is used for executing the application. This includes all java classes and libraries that are needed to run the java application. A Classpath is mandatory, the default path is . which is used if the java virtual machine can't find a user defined path. (CLASSPATH environment variable, -cp flag or Class-Path: attribute in a jar manifest)
+
+The classpath is the conventional way to tell the Java compiler and the Java runtime where to find compiled classes. It is typically a sequence of JAR file names and directory names. The classpath used by the compiler and the runtime system don't have to be the same, but they typically "should be*, especially for a small project.
+Buildpath is not standard Java terminology. It is the term for the richer way that a typical IDE specifies the relationship between the "modules" or "projects" that make up an application. The IDE uses this to figure out the classpath and sourcepath for compiling the Java code, and the classpath for running it. The IDE also uses the build path to figure out how to package up your code and its dependencies as (for example) a WAR file.
+For example, an Eclipse build path for a project includes the other projects that it depends on, and lists any additional library JARs that the project contains / relies on. It also lists the packages in the current project that downstream projects can depend on.
+(If you are using Maven for your project, the IDE buildpath mechanism is secondary to the dependencies declared in the POM files. For example, using Eclipse with the m2eclipse, the buildpath is synthesized from the POM files.)
+

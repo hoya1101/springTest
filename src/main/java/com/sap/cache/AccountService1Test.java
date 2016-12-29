@@ -30,8 +30,7 @@ public class AccountService1Test {
         accountService1.getAccountByName("accountName");
  
         accountService1.reload();
-        logger.debug("after reload ....");
-        logger.info("after reload info ....");
+        logger.info("after reload ....");
         
         accountService1.getAccountByName("accountName");
         accountService1.getAccountByName("accountName");
