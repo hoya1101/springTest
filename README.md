@@ -40,3 +40,7 @@ Buildpath is not standard Java terminology. It is the term for the richer way th
 For example, an Eclipse build path for a project includes the other projects that it depends on, and lists any additional library JARs that the project contains / relies on. It also lists the packages in the current project that downstream projects can depend on.
 (If you are using Maven for your project, the IDE buildpath mechanism is secondary to the dependencies declared in the POM files. For example, using Eclipse with the m2eclipse, the buildpath is synthesized from the POM files.)
 
+# 2017-01-01
+[slf4j的包使用说明](http://hanhongke123.blog.163.com/blog/static/62223494201241631644433/)
+
+[slf4j和log4j配置 ](http://blog.csdn.net/xuanjiewu/article/details/7587586)
