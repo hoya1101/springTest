@@ -49,4 +49,7 @@ For example, an Eclipse build path for a project includes the other projects tha
 @Service has additional feature of @Component.
 Component: considered as candidates for auto-detection when using annotation-based configuration and classpath scanning.
 
-Other class-level annotations may be considered as identifying a component as well, typically a special kind of component: e.g. @Repository and @Aspect annotation.
+Other class-level annotations may be considered as identifying a component as well, typically a special kind of component: e.g. @Repository, @Service and @Aspect annotation.
+
+@Service: This annotation is a general-purpose stereotype and individual teams may narrow their semantics and use as appropriate.
+ 
