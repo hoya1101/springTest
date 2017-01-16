@@ -7,8 +7,10 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+
 import com.sap.aop.Durid;
 import com.sap.bean.Level10Durid;
+
 import org.springframework.aop.target.HotSwappableTargetSource;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
@@ -20,12 +22,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 // Jerry 2016-08-07 16:11PM - this interface should be applied in interface
 // Jerry 2016-08-07 16:37PM - @Component - does not work
 // Jerry 2016-08-15 17:25PM - https://www.mkyong.com/spring/spring-aop-examples-advice/
 
 @Component
+//@Service
 public class MavenSandbox implements BeanFactoryAware, BeanPostProcessor {
 
 	private BeanFactory beanFactory;

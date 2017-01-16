@@ -44,3 +44,9 @@ For example, an Eclipse build path for a project includes the other projects tha
 [slf4j的包使用说明](http://hanhongke123.blog.163.com/blog/static/62223494201241631644433/)
 
 [slf4j和log4j配置 ](http://blog.csdn.net/xuanjiewu/article/details/7587586)
+
+# 2017-01-16
+@Service has additional feature of @Component.
+Component: considered as candidates for auto-detection when using annotation-based configuration and classpath scanning.
+
+Other class-level annotations may be considered as identifying a component as well, typically a special kind of component: e.g. @Repository and @Aspect annotation.
